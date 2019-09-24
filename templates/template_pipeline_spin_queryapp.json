@@ -1,0 +1,67 @@
+{
+ "application": "queryapp",
+ "expectedArtifacts": [
+  {
+   "defaultArtifact": {
+    "artifactAccount": "gcs-${google_project_name}",
+    "id": "17318591-1d72-44cd-9f94-d17486d8b8d4",
+    "name": "gs://${google_project_name}-spinnaker-conf/queryapp/ready_kub_dev.yaml",
+    "reference": "gs://${google_project_name}-spinnaker-conf/queryapp/ready_kub_dev.yaml",
+    "type": "gcs/object"
+   },
+   "displayName": "lazy-vampirebat-91",
+   "id": "5d09be1d-7b4d-4dff-a05f-55d31caf4cfa",
+   "matchArtifact": {
+    "artifactAccount": "gcs-${google_project_name}",
+    "id": "3d006036-bbe7-47e9-a0d7-fa2ca7562352",
+    "name": "gs://${google_project_name}-spinnaker-conf/queryapp/ready_kub_dev.yaml",
+    "type": "gcs/object"
+   },
+   "useDefaultArtifact": true,
+   "usePriorArtifact": false
+  }
+ ],
+ "id": "360ee9eb-7c93-4deb-b7e4-168cc75887dc",
+ "index": 0,
+ "keepWaitingPipelines": false,
+ "lastModifiedBy": "anonymous",
+ "limitConcurrent": true,
+ "name": "queryapp-build",
+ "stages": [
+  {
+   "account": "core",
+   "cloudProvider": "kubernetes",
+   "manifestArtifactAccount": "gcs-${google_project_name}",
+   "manifestArtifactId": "5d09be1d-7b4d-4dff-a05f-55d31caf4cfa",
+   "moniker": {
+    "app": "queryapp"
+   },
+   "name": "Deploy (Manifest)",
+   "refId": "1",
+   "requisiteStageRefIds": [],
+   "skipExpressionEvaluation": false,
+   "source": "artifact",
+   "trafficManagement": {
+    "enabled": false,
+    "options": {
+     "enableTraffic": false,
+     "services": []
+    }
+   },
+   "type": "deployManifest"
+  }
+ ],
+ "triggers": [
+  {
+   "enabled": true,
+   "payloadConstraints": {
+    "source": "github_kv-053-devops_queryapp",
+    "status": "SUCCESS"
+   },
+   "pubsubSystem": "google",
+   "subscriptionName": "spinnaker-subscription",
+   "type": "pubsub"
+  }
+ ],
+ "updateTs": "1568317019876"
+}

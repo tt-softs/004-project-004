@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-db
+spec:
+  # Use service account that can deploy to all namespaces
+  containers:
+  - name: client-db
+    image: ubuntu
+    #image: jbergknoff/postgresql-client

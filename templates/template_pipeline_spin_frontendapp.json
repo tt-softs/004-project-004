@@ -1,0 +1,67 @@
+{
+ "application": "frontendapp",
+ "expectedArtifacts": [
+  {
+   "defaultArtifact": {
+    "artifactAccount": "gcs-${google_project_name}",
+    "id": "2551d0f3-9b4b-4a2f-a4d3-e4285f2c3f86",
+    "name": "gs://${google_project_name}-spinnaker-conf/frontendapp/ready_kub_dev.yaml",
+    "reference": "gs://${google_project_name}-spinnaker-conf/frontendapp/ready_kub_dev.yaml",
+    "type": "gcs/object"
+   },
+   "displayName": "old-dingo-40",
+   "id": "c7f3ee1d-e510-4086-a356-5a73748db20d",
+   "matchArtifact": {
+    "artifactAccount": "gcs-${google_project_name}",
+    "id": "2c4d7898-9e38-43b1-8c88-95e22be2e091",
+    "name": "gs://${google_project_name}-spinnaker-conf/frontendapp/ready_kub_dev.yaml",
+    "type": "gcs/object"
+   },
+   "useDefaultArtifact": true,
+   "usePriorArtifact": false
+  }
+ ],
+ "id": "84ba9989-b686-46b8-afca-8cd2563ef23b",
+ "index": 0,
+ "keepWaitingPipelines": false,
+ "lastModifiedBy": "anonymous",
+ "limitConcurrent": true,
+ "name": "frontendapp-build",
+ "stages": [
+  {
+   "account": "core",
+   "cloudProvider": "kubernetes",
+   "manifestArtifactAccount": "gcs-${google_project_name}",
+   "manifestArtifactId": "c7f3ee1d-e510-4086-a356-5a73748db20d",
+   "moniker": {
+    "app": "frontendapp"
+   },
+   "name": "Deploy (Manifest)",
+   "refId": "1",
+   "requisiteStageRefIds": [],
+   "skipExpressionEvaluation": false,
+   "source": "artifact",
+   "trafficManagement": {
+    "enabled": false,
+    "options": {
+     "enableTraffic": false,
+     "services": []
+    }
+   },
+   "type": "deployManifest"
+  }
+ ],
+ "triggers": [
+  {
+   "enabled": true,
+   "payloadConstraints": {
+    "source": "github_kv-053-devops_frontendapp",
+    "status": "SUCCESS"
+   },
+   "pubsubSystem": "google",
+   "subscriptionName": "spinnaker-subscription",
+   "type": "pubsub"
+  }
+ ],
+ "updateTs": "1568317176787"
+}

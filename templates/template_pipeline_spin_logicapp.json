@@ -1,0 +1,67 @@
+{
+ "application": "logicapp",
+ "expectedArtifacts": [
+  {
+   "defaultArtifact": {
+    "artifactAccount": "gcs-${google_project_name}",
+    "id": "8dce9c56-3d8e-4577-bc92-e415a5ac2cbc",
+    "name": "gs://${google_project_name}-spinnaker-conf/logicapp/ready_kub_dev.yaml",
+    "reference": "gs://${google_project_name}-spinnaker-conf/logicapp/ready_kub_dev.yaml",
+    "type": "gcs/object"
+   },
+   "displayName": "itchy-chipmunk-31",
+   "id": "d61aa3a9-deac-4ce9-b918-103f7117155f",
+   "matchArtifact": {
+    "artifactAccount": "gcs-${google_project_name}",
+    "id": "2bc4391a-ddef-48d8-916a-60a28d08a1c7",
+    "name": "gs://${google_project_name}-spinnaker-conf/logicapp/ready_kub_dev.yaml",
+    "type": "gcs/object"
+   },
+   "useDefaultArtifact": true,
+   "usePriorArtifact": false
+  }
+ ],
+ "id": "f6497fb1-a383-4ed9-bfbb-2a83fd0bc55f",
+ "index": 0,
+ "keepWaitingPipelines": false,
+ "lastModifiedBy": "anonymous",
+ "limitConcurrent": true,
+ "name": "logicapp-build",
+ "stages": [
+  {
+   "account": "core",
+   "cloudProvider": "kubernetes",
+   "manifestArtifactAccount": "gcs-${google_project_name}",
+   "manifestArtifactId": "d61aa3a9-deac-4ce9-b918-103f7117155f",
+   "moniker": {
+    "app": "logicapp"
+   },
+   "name": "Deploy (Manifest)",
+   "refId": "1",
+   "requisiteStageRefIds": [],
+   "skipExpressionEvaluation": false,
+   "source": "artifact",
+   "trafficManagement": {
+    "enabled": false,
+    "options": {
+     "enableTraffic": false,
+     "services": []
+    }
+   },
+   "type": "deployManifest"
+  }
+ ],
+ "triggers": [
+  {
+   "enabled": true,
+   "payloadConstraints": {
+    "source": "github_kv-053-devops_logicapp",
+    "status": "SUCCESS"
+   },
+   "pubsubSystem": "google",
+   "subscriptionName": "spinnaker-subscription",
+   "type": "pubsub"
+  }
+ ],
+ "updateTs": "1568316829743"
+}

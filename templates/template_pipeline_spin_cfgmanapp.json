@@ -1,0 +1,68 @@
+{
+ "application": "cfgmanapp",
+ "expectedArtifacts": [
+  {
+   "defaultArtifact": {
+    "artifactAccount": "gcs-${google_project_name}",
+    "id": "447fdcdf-91fc-47be-afac-6a0215d49855",
+    "name": "gs://${google_project_name}-spinnaker-conf/confman/ready_kub_dev.yaml",
+    "reference": "gs://${google_project_name}-spinnaker-conf/confman/ready_kub_dev.yaml",
+    "type": "gcs/object"
+   },
+   "displayName": "fluffy-mouse-5",
+   "id": "438cbba3-354f-46b9-9205-bfbf7eeef2b5",
+   "matchArtifact": {
+    "artifactAccount": "gcs-${google_project_name}",
+    "id": "10cb1c99-1df7-4cca-bcdd-ff6b180698df",
+    "name": "gs://${google_project_name}-spinnaker-conf/confman/ready_kub_dev.yaml",
+    "type": "gcs/object"
+   },
+   "useDefaultArtifact": true,
+   "usePriorArtifact": false
+  }
+ ],
+ "id": "097364cb-6b54-481b-8ddd-c90042c7c3dd",
+ "index": 0,
+ "keepWaitingPipelines": false,
+ "lastModifiedBy": "anonymous",
+ "limitConcurrent": true,
+ "name": "cfgmanapp-build",
+ "parameterConfig": [],
+ "stages": [
+  {
+   "account": "core",
+   "cloudProvider": "kubernetes",
+   "manifestArtifactAccount": "gcs-${google_project_name}",
+   "manifestArtifactId": "438cbba3-354f-46b9-9205-bfbf7eeef2b5",
+   "moniker": {
+    "app": "cfgmanapp"
+   },
+   "name": "Deploy (Manifest)",
+   "refId": "1",
+   "requisiteStageRefIds": [],
+   "skipExpressionEvaluation": false,
+   "source": "artifact",
+   "trafficManagement": {
+    "enabled": false,
+    "options": {
+     "enableTraffic": false,
+     "services": []
+    }
+   },
+   "type": "deployManifest"
+  }
+ ],
+ "triggers": [
+  {
+   "enabled": true,
+   "payloadConstraints": {
+    "source": "github_kv-053-devops_cfgmanapp",
+    "status": "SUCCESS"
+   },
+   "pubsubSystem": "google",
+   "subscriptionName": "spinnaker-subscription",
+   "type": "pubsub"
+  }
+ ],
+ "updateTs": "1568314566748"
+}
