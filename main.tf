@@ -87,8 +87,8 @@ resource "google_container_cluster" "primary" {
   name        = "${var.cluster_name}"
   project     = "${var.project_name}"
   description = "Demo GKE Cluster"
-  location    = "${var.region}-a"
-  # location    = "${var.region_kuber}"
+  # location    = "${var.region}-a"
+  location = "${var.region_kuber}"
   # location    = "us-central1-a"
   # "${var.region}"
   min_master_version = "${var.kubernetes_ver}"
@@ -108,10 +108,10 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary" {
-  name     = "${var.cluster_name}-node-pool"
-  project  = "${var.project_name}"
-  location = "${var.region}-a"
-  # location = "${var.region_kuber}"
+  name    = "${var.cluster_name}-node-pool"
+  project = "${var.project_name}"
+  # location = "${var.region}-a"
+  location = "${var.region_kuber}"
   # location = "us-central1-a"
   # "${var.region}"
   cluster    = "${google_container_cluster.primary.name}"

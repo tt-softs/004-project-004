@@ -12,20 +12,21 @@ variable "project" {
 variable "region" {
   description = "The region to host the database in."
   type        = string
-  # default     = "europe-west1"
-  default = "us-central1"
+  default     = "europe-west2"
+  # default = "us-central1"
 }
 
-# variable "region_kuber" {
-#   description = "The region to host the k8s cluster in."
-#   type        = string
-#   default     = "us-central1-a"
-#   # default = format("%s-a", "${var.region}")
-# }
+variable "region_kuber" {
+  description = "The region to host the k8s cluster in."
+  type        = string
+  default     = "europe-west2-c"
+  # "us-central1-a"
+  # default = format("%s-a", "${var.region}")
+}
 
 variable "nodes_in_kuber" {
   description = "Nodes in cluster."
-  default     = "4"
+  default     = "3"
 }
 
 
